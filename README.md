@@ -12,3 +12,4 @@ npx skills add ozgb/ozgb-skills --skill comment-cleanup
 | Skill | What it does |
 |-------|--------------|
 | [comment-cleanup](skills/comment-cleanup/SKILL.md) | Comment-only pass: delete narration and noise, keep comments that carry *why* |
+| [festival-playlist](skills/festival-playlist/SKILL.md) | Spotify playlist from a festival line-up URL or poster, N tracks per artist, grouped by day |
