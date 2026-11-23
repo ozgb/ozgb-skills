@@ -13,3 +13,4 @@ npx skills add ozgb/ozgb-skills --skill comment-cleanup
 |-------|--------------|
 | [comment-cleanup](skills/comment-cleanup/SKILL.md) | Comment-only pass: delete narration and noise, keep comments that carry *why* |
 | [festival-playlist](skills/festival-playlist/SKILL.md) | Spotify playlist from a festival line-up URL or poster, N tracks per artist, grouped by day |
+| [property-list](skills/property-list/SKILL.md) | Property list for property-based tests of a component, after Hughes' *How to Specify It!*: agree a validity invariant, then kind-labelled properties in pseudo-code |
