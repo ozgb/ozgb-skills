@@ -67,6 +67,11 @@ every generated value is valid           test-code check: the test-case generato
 every shrink of a valid value is valid   test-code check: shrinking is right
 ```
 
+Shrink with the framework's built-in shrinker; a hand-written one is clever test code. The shrink
+property still applies to built-in shrinkers, since a type-based shrinker never sees `valid`. When a
+shrunk failure is still too large to read, give it to an agent to reduce rather than writing a
+cleverer shrinker.
+
 ## 3. Propose the properties
 
 Ask each kind's question of every entry point. The table order is the order to ask in; the
