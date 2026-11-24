@@ -19,6 +19,13 @@ call as a pure function `(state, input) -> (result, state')`. State includes cac
 statics, config and flags. A test case is a **history**, a sequence of calls; a state is
 **reachable** when some history from the initial state produces it.
 
+Nothing tests the test code, so write it to be **obviously correct**, not fast: every `valid`,
+model, abstraction function and test-case generator the list asks for is the plainest code that is
+plainly right (a linear scan, a full recompute, an association list). A slow test runs fewer
+cases; a clever one carries its own bugs, which fail correct code or pass broken code and point at
+the wrong place. A model as hard to get right as the implementation is no simpler than it; use
+metamorphic properties there instead.
+
 ## 1. Model the component
 
 Read the component's code end to end: each public entry point, every input it reads (explicit
@@ -39,8 +46,8 @@ not, unrelated properties fail and point at the wrong code.
 
 Propose one to three candidates. For each give:
 
-- the predicate in pseudo-code over Definitions terms, written the obvious way, not the efficient
-  way (a clever `valid` needs its own proof)
+- the predicate in pseudo-code over Definitions terms, obviously correct (a clever `valid` needs
+  its own proof)
 - one concrete invalid state it rejects
 - where the code relies on it (`file:line`)
 
@@ -92,6 +99,9 @@ Then test the set as a whole. Fix the set whenever a check fails:
   Otherwise most generated cases are discarded, and a weak precondition lets bugs through.
 - **Collisions**: where two generated values must coincide to reach a case (same key, same state,
   same tx), the property says how the test-case generator makes that happen often enough.
+- **Obvious correctness**: every `valid`, model, abstraction function and test-case generator the
+  set needs is obviously correct on reading. Replace any that needs an optimisation, a cache or
+  careful index arithmetic with the plain version, or drop the property it serves.
 
 ## 4. Write it up
 
